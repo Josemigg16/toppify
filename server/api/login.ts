@@ -4,7 +4,7 @@ import { generateRandomString } from "~/utils/generateRandomString"
 export default defineEventHandler(({ node }) => {
   const config = useRuntimeConfig()
   const state = generateRandomString(16)
-  const scope = "user-read-private user-read-email"
+  const scope = "user-read-private user-read-email user-top-read"
   node.res.writeHead(301, {
     location:
       "https://accounts.spotify.com/authorize?" +
