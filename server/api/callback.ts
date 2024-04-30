@@ -31,7 +31,10 @@ export default defineEventHandler(async (event) => {
 		const data = await res.json()
 		if (data.access_token) {
 			event.node.res.writeHead(301, {
-				location: config.public.baseUrl + '/auth?' + new URLSearchParams(data).toString()
+				location: config.public.baseUrl + '/auth?' + new URLSearchParams({
+					access_token: data.access_token,
+					refresh_token: data.refresh_token
+				}).toString()
 			})
 			event.node.res.end()
 		}
