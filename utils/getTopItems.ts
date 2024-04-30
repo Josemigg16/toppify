@@ -1,15 +1,21 @@
-interface options {
-	type: 'artists' | 'tracks'
-	timeRange?: 'long_term' | 'medium_term' | 'short_term'
-	limit?: number
-}
+import type { ItemOptions } from '~/types'
+import querystring from 'querystring'
 
-export async function getTopItems({ type, timeRange = 'medium_term', limit = 20 }: options) {
+export async function getTopItems({ type, timeRange, limit }: ItemOptions) {
 	const token = localStorage.getItem('access_token') as string
-	const artists = fetch(`https://api.spotify.com/v1/me/top/${type}`, {
-		headers: {
-			Authorization: 'Bearer ' + token
+	const res = await fetch(
+		'https://api.spotify.com/v1/me/top/' +
+			`${type}?` +
+			querystring.stringify({
+				time_range: timeRange || 'medium_term',
+				limit: limit ?? 20
+			}),
+		{
+			headers: {
+				Authorization: 'Bearer ' + token
+			}
 		}
-	})
-	return artists
+	)
+	const artists = await res.json()
+	return artists?.items
 }

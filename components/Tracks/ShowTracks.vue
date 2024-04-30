@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import TrackRow from './TrackRow.vue'
-import { ref } from 'vue';
-
-const tracks = ref(await getTopItems('tracks'))
-console.log(tracks)
+import GoBack from '~/components/GoBack.vue'
+const itemsStore = useItemsStore()
+const { items } = storeToRefs(itemsStore)
 </script>
 <template>
-    <section>
-        <h2>Here are the songs</h2>
-        <section>
-            <TrackRow />
+    <section class="w-screen p-24">
+        <GoBack />
+        <section class="mx-auto w-fit">
+            <TrackRow v-for="item, index in items" :key="index" :item="item" />
         </section>
     </section>
 </template>

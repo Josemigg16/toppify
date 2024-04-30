@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import Form from '~/components/optionsForm.vue'
 import ShowTracks from '~/components/Tracks/ShowTracks.vue'
-const showForm = ref(true)
-const itemType = ref('' as 'tracks' | 'artist' | '')
+import ShowArtists from '~/components/Artists/ShowArtists.vue';
 refreshToken()
+
+const formStore = useFormStore()
+const itemsStore = useItemsStore()
+const { show } = storeToRefs(formStore)
+const { itemType } = storeToRefs(itemsStore)
+
 </script>
 
 <template>
-  <main>
-    <h1>dashboard</h1>
-    <Form v-if="showForm" :item-type="itemType" :show-form="showForm" />
-    <ShowTracks v-if="itemType === 'tracks'" />
-
+  <main class="relative">
+    <Form v-if="show" />
+    <ShowTracks v-if="itemType === 'tracks' && !show" />
+    <ShowArtists v-if="itemType === 'artists' && !show" />
   </main>
 </template>

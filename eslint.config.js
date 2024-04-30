@@ -6,4 +6,6 @@ export default nuxt({
 		'@typescript-eslint/no-unused-vars': 'warn',
 		semi: ['error', 'never']
 	}
+}).overrideRules({
+	'vue/first-attribute-linebreak': 'off'
 })
