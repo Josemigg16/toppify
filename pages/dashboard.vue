@@ -1,19 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const config = useRuntimeConfig()
-const redirect = ref(false)
-
-onNuxtReady(async () => {
-  const success = await getRefreshToken() as boolean
-  redirect.value = success ? true : false
-  if (redirect.value) window.location.replace(config.public.baseUrl)
-  getTopArtist()
-})
-
-
+import Form from '~/components/optionsForm.vue'
+import ShowTracks from '~/components/Tracks/ShowTracks.vue'
+const showForm = ref(true)
+const itemType = ref('' as 'tracks' | 'artist' | '')
+refreshToken()
 </script>
 
 <template>
-  <h1>dashboard</h1>
+  <main>
+    <h1>dashboard</h1>
+    <Form v-if="showForm" :item-type="itemType" :show-form="showForm" />
+    <ShowTracks v-if="itemType === 'tracks'" />
+
+  </main>
 </template>
