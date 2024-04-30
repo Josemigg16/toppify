@@ -1,4 +1,5 @@
 import querystring from 'querystring'
+import { navigateTo } from '#app'
 
 export default defineEventHandler(async event => {
 	const config = useRuntimeConfig()
