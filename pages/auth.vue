@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
-const accessToken = route.query.access_token as | null | undefined
-const refreshToken = route.query.refresh_token as | null | undefined
+const accessToken = route.query.access_token as string | null | undefined
+const refreshToken = route.query.refresh_token as string | null | undefined
 
 if (typeof window !== 'undefined') {
   localStorage.setItem('access_token', accessToken || '')
