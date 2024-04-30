@@ -12,3 +12,6 @@ if (typeof window !== 'undefined') {
 }
 
 </script>
+<template>
+  <main/>
+</template>
