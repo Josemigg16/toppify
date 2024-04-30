@@ -1,7 +1,6 @@
 import querystring from 'querystring'
-import { navigateTo } from '#app'
 
-export default defineEventHandler(async event => {
+export default defineEventHandler(async (event) => {
 	const config = useRuntimeConfig()
 	const query = getQuery(event)
 	const code = (query.code ?? null) as string | null
@@ -31,7 +30,10 @@ export default defineEventHandler(async event => {
 		})
 		const data = await res.json()
 		if (data.access_token) {
-			navigateTo('/auth?' + querystring.stringify(data))
+			event.node.res.writeHead(301, {
+				location: config.public.baseUrl + '/auth?' + querystring.stringify(data)
+			})
+			event.node.res.end()
 		}
 	}
 })
