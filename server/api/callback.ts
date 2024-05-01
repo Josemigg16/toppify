@@ -1,5 +1,3 @@
-import querystring from 'querystring'
-
 export default defineEventHandler(async (event) => {
 	const config = useRuntimeConfig()
 	const query = getQuery(event)
@@ -9,7 +7,7 @@ export default defineEventHandler(async (event) => {
 		event.node.res.writeHead(
 			301,
 			'/#' +
-				querystring.stringify({
+				new URLSearchParams({
 					error: 'state_mismatch'
 				})
 		)
