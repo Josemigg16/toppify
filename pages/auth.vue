@@ -6,6 +6,7 @@ const refreshToken = route.query.refresh_token as string | null | undefined
 if (typeof window !== 'undefined') {
   localStorage.setItem('access_token', accessToken || '')
   localStorage.setItem('refresh_token', refreshToken || '')
+  await navigateTo('/dashboard')
 }
 
 </script>
