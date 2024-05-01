@@ -12,6 +12,10 @@ const handleSubmit = () => {
         limit: limit.value
     })
 }
+const signOut = () => {
+    localStorage.clear()
+    navigateTo('/')
+}
 </script>
 
 <template>
@@ -42,7 +46,14 @@ const handleSubmit = () => {
         </div>
 
         <button type="submit"
-            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 w-full">Go</button>
+            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 w-full">
+            Go
+        </button>
+        <button type="button"
+            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 w-full"
+            @click="signOut">
+            Sign Out
+        </button>
 
     </form>
 </template>
