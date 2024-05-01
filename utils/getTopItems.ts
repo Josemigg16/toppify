@@ -1,5 +1,4 @@
 import type { ItemOptions } from '~/types'
-import querystring from 'querystring'
 
 export async function getTopItems({ type, timeRange, limit }: ItemOptions) {
 	const token = localStorage.getItem('access_token') as string
