@@ -6,3 +6,6 @@
       href="/api/login">Login for showing charts</a>
   </main>
 </template>
+<script setup lang="ts">
+refreshToken()
+</script>
