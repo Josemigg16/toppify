@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     body: new URLSearchParams({
       grant_type: "refresh_token",
       refresh_token,
-    }),
+    }).toString(),
     headers: {
       "content-type": "application/x-www-form-urlencoded",
       Authorization:

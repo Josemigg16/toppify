@@ -6,10 +6,10 @@ export async function getTopItems({ type, timeRange, limit }: ItemOptions) {
 	const res = await fetch(
 		'https://api.spotify.com/v1/me/top/' +
 			`${type}?` +
-			querystring.stringify({
+			new URLSearchParams({
 				time_range: timeRange || 'medium_term',
-				limit: limit ?? 20
-			}),
+				limit: (limit ?? 20).toString()
+			}).toString(),
 		{
 			headers: {
 				Authorization: 'Bearer ' + token

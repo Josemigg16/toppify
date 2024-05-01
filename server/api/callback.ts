@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
 			'/#' +
 				new URLSearchParams({
 					error: 'state_mismatch'
-				})
+				}).toString()
 		)
 		event.node.res.end()
 	} else {
