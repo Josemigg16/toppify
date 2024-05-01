@@ -7,6 +7,7 @@ export function refreshToken() {
 	onNuxtReady(async () => {
 		const success = (await getRefreshToken()) as boolean
 		redirect.value = success ? true : false
-		if (redirect.value) navigateTo('/dashboard')
+		if (redirect.value) navigateTo('/')
+		else navigateTo('/dashboard')
 	})
 }
