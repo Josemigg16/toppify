@@ -16,11 +16,11 @@ export default defineEventHandler(async (event) => {
 		event.node.res.end()
 	} else {
 		const res = await fetch('https://accounts.spotify.com/api/token', {
-			body: querystring.stringify({
-				code,
+			body: new URLSearchParams({
+				code: code || '',
 				redirect_uri: config.redirectUri,
 				grant_type: 'authorization_code'
-			}),
+			}).toString(),
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded',
 				Authorization:

@@ -1,4 +1,3 @@
-import querystring from "querystring"
 import { generateRandomString } from "~/utils/generateRandomString"
 
 export default defineEventHandler(({ node }) => {
@@ -8,13 +7,13 @@ export default defineEventHandler(({ node }) => {
   node.res.writeHead(301, {
     location:
       "https://accounts.spotify.com/authorize?" +
-      querystring.stringify({
+      new URLSearchParams({
         response_type: "code",
         client_id: config.clientId,
         scope: scope,
         redirect_uri: config.redirectUri,
         state: state,
-      }),
+      }).toString(),
   })
   node.res.end()
 })
