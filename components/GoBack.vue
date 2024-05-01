@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const goBack = () => {
-    const { setShow } = useFormStore()
-    setShow(true)
+    navigateTo('/dashboard')
 }
 </script>
 <template>
