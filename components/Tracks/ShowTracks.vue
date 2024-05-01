@@ -6,7 +6,7 @@ const { items } = storeToRefs(itemsStore)
 </script>
 <template>
     <section class="w-screen p-24 grid place-content-center">
-        <GoBack />
+        <GoBack v-if="items.length > 0" />
         <section class="w-fit">
             <TrackRow v-for="item, index in items" :key="index" :item="item" />
         </section>

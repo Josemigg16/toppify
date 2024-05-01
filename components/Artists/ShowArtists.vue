@@ -6,7 +6,7 @@ const { items } = storeToRefs(itemsStore)
 </script>
 <template>
     <section class="w-screen p-24">
-        <GoBack />
+        <GoBack v-if="items.length > 0" />
         <section class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] place-content-center">
             <ArtistCard v-for="item, index in items" :key="index" :item="item" />
         </section>
